@@ -1,3 +1,4 @@
+/*declara variáveis css globais*/
 :root {
   --background-body: #E5E5E5;
   --background-content: #1D1D1D;
@@ -5,7 +6,7 @@
   --primary-color: #4DFF7C;
   --second-color: #89DDFF;
 }
-
+/*estilo da tag "<body>"*/
 body {
   margin: 0;
   font-size: 1rem;

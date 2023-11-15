@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 import DropComapies from "./DropCompanies"
 
-const Form = ({ userData = {}, postUser, updateUser }) => {
-	const [user, setUser] = useState({
+
+const Form = ({ userData = {}, postUser, updateUser }) => {//recebe por desestruturação userData com valor padrão ,postUser e updateUser
+	const [user, setUser] = useState({//define o valor inicial de user como um objeto javascript que recebe dados de userData
 		name: userData.name ?? "",
 		username: userData.username ?? "",
 		email: userData.email ?? "",
@@ -11,23 +12,23 @@ const Form = ({ userData = {}, postUser, updateUser }) => {
 	})
 
 	const handleValue = e => {
-		setUser({ ...user, [e.target.name]: e.target.value })
+		setUser({ ...user, [e.target.name]: e.target.value })//espalhamento de user, mais um par chave valor sobrepondo o anterior, para definir o valor de  user
 	}
 
 	const submitUser = e => {
-		e.preventDefault()
+		e.preventDefault() // previne o comportanto padrão
 
 		if (user.companiesId === "0") return
 
-		if (userData.id) {
+		if (userData.id) {//chama a função postUser ou updateUser dependendo se existe userData.id
 			updateUser(userData.id, user)
 		} else {
 			postUser(user)
 		}
 	}
 
-	return (
-		<form onSubmit={submitUser} className='row'>
+	return (//formulário em JSX
+		<form onSubmit={submitUser} className='row'>//função submitUser irá lidar com os dados do formulário
 			<input
 				type='text'
 				name='name'
@@ -54,7 +55,7 @@ const Form = ({ userData = {}, postUser, updateUser }) => {
 			<input
 				className='btn-submit'
 				type='submit'
-				value={`${!userData.id ? "Add new user" : "Save user"}`}
+				value={`${!userData.id ? "Add new user" : "Save user"}`}//valor  dependendo do userData
 			/>
 		</form>
 	)

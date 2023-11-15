@@ -1,7 +1,7 @@
 export const httpHelper = () => {
-	const customFetch = async (url, options = {}) => {
+	const customFetch = async (url, options = {}) => {//funçao assíncrona recebe dois parâmetros
 		const defaultMethod = "GET"
-		const defaultHeaders = {
+		const defaultHeaders = { // define dafaultHeadrs
 			"Content-Type": "application/json",
 			Accept: "application/json",
 		}
@@ -21,7 +21,7 @@ export const httpHelper = () => {
 		}, 3000)
 
 		try {
-			const response = await fetch(url, options)
+			const response = await fetch(url, options)//aguarda resposta para continuar a execução
 			return await response.json()
 		} catch (err) {
 			return err
@@ -45,7 +45,7 @@ export const httpHelper = () => {
 		return customFetch(url, options)
 	}
 
-	return {
+	return {//retorna as funções para realizar CRUD
 		get,
 		post,
 		put,

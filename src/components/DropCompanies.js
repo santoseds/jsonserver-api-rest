@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { httpHelper } from "../helpers/httpHelper"
 
-const DropCompanies = ({ companiesId, handleValue }) => {
+const DropCompanies = ({ companiesId, handleValue }) => {//recebe dados por desestruturação
 	const [companies, setCompanies] = useState(null)
 	const [company, setCompany] = useState(companiesId)
 
@@ -14,7 +14,7 @@ const DropCompanies = ({ companiesId, handleValue }) => {
 			.then(res => {
 				setCompanies([{ id: 0, name: "Select Company" }, ...res])
 			})
-			.catch(err => console.log(err))
+			.catch(err => console.log(err))// lida com resposta de erro
 	}, [])
 
 	if (!companies) return null

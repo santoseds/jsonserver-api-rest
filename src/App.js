@@ -5,6 +5,7 @@ import "./styles/App.css"
 function App() {
 	return (
 		<>
+		{/*Estrutura do documento em JSX, mais os componentes  "<LogoIcon />" e "<CrudUser />"*/}
 			<header>
 				<div className='header__content'>
 					<div className='logo'>

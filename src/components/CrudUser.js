@@ -5,18 +5,18 @@ import Table from "./Table"
 import { httpHelper } from "../helpers/httpHelper"
 
 const CrudUser = () => {
-	const [users, setUsers] = useState(null)
+	const [users, setUsers] = useState(null)//valor null para users
 
 	const url = "http://localhost:5000/users"
 	const api = httpHelper()
 
-	useEffect(() => {
+	useEffect(() => {//executa a funçao getUsers apenas na primeira renderização
 		getUsers()
 	}, [])
 
 	const postUser = user => {
 		api
-			.post(`${url}`, { body: user })
+			.post(`${url}`, { body: user })// utiliza api post  com then  para lidar com a Promise de resposta, catch para lidar com uma resposta de  erro
 			.then(res => getUsers())
 			.catch(err => console.log(err))
 	}
@@ -52,7 +52,7 @@ const CrudUser = () => {
 			<Form postUser={postUser} />
 			<div className='all-users'>
 				<h3>All users</h3>
-				<Table
+				<Table //componente <Table> recebe dados com a utilizaão de props
 					users={users}
 					setUsers={setUsers}
 					postUser={postUser}
